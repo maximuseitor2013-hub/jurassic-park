@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurassic Park</title>
+    <link rel="shortcut icon" href="https://i.postimg.cc/4dhf2XcR/favicon.png" type="image/png">
+    <style>
+        body{
+            font-family: Impact, Haettenschweiler, sans-serif;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        game-container{
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid white;
+            background-color: #222;
+            border-radius: 10px;
+        }
+
+        img{
+            width: 600px;
+            border-radius: 10px;
+        }
+
+        .choice{
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: 80%;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: brown;
+            color: rgb(254, 253, 251);
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="game-container">
+    <h2 id="title">Jurassic Park</h2>
+    <img id="scene-img" src="cena 1.png" alt="cena do jogo">
+    <p id="story"> um suspeito casal de milionários fazem uma proposta para você sobrevoar a ilha sorna</p>
+    <button class="choice" onclick="escolha('prosseguir')"> prosseguir </button>
+    <button class="choice" onclick="escolha('continuar')">continuar conversando</button>
+    
+</div>
+    <script>
+    function escolha(opcao){
+        let titulo = document.getElementById("title");
+        let imagem = document.getElementById("scene-img");
+        let historia = document.getElementById("story");
+        let botoes = document.querySelectorAll(".choice");
+
+     
+        if(opcao === 'prosseguir'){
+            titulo.innerText = "a ilha"
+            imagem.src= "ilha.png";
+            historia.innerText= " eles dizem que vão pousar";
+            botoes[0].innerText= "concordar em pousar";
+            botoes[0].setAttribute("onclick", "escolha('pousar')");
+            botoes[1].innerText= "nao pousar";
+            botoes[1].setAttribute("onclick", "escolha('naoPousar')");
+        }
+        else if(opcao === 'continuar'){
+            titulo.innerText = "era mentira";
+            imagem.src= "aviao.png";
+            historia.innerText= " eles posaram e você descobre que era mentira eles vieram procurar o filho deles que estava perdido e te chamaram pensando que você conhecia a ilha.";
+            botoes[0].innerText= "descer do avião e os ajudar a procurar o filho deles";
+            botoes[0].setAttribute("onclick", "escolha('descer')");
+            botoes[1].innerText= "ficar no avião e dizer para voltarem";
+            botoes[1].setAttribute("onclick", "escolha('voltar')");
+        }
+    
+        else if(opcao === 'pousar'){
+            titulo.innerText = "na floresta";
+            imagem.src= "aviao caido.png";
+            historia.innerText= " você ouve tiros e um rugido estranho e todos voltam para o aviao voces tentam sair mas o avião cai";
+            botoes.forEach(botao => botao.style.display="none");
+        
+        }
+        else if(opcao === 'naoPousar'){
+            titulo.innerText = "sobre a floresta";
+            imagem.src= "floresta.jpg";
+            historia.innerText= "voes retornao com segurança";
+            botoes.forEach(botao => botao.style.display="none");
+        
+        }
+        else if(opcao === 'descer'){
+            titulo.innerText = "ataque de dinossauros";
+            imagem.src= "dinossauro.png";
+            historia.innerText= "Vocês são atacados por pterodáctilos que fazem o avião cair bruscamente e são atacados por vários outros.";
+            botoes.forEach(botao => botao.style.display="none");
+        
+        }
+         else if(opcao === 'voltar'){
+            titulo.innerText = "aguardando resgate";
+            imagem.src= "dinossauro.png";
+            historia.innerText= "Vocês são atacados por pterodáctilos que fazem o avião cair bruscamente e são atacados por vários outros.";
+            botoes.forEach(botao => botao.style.display="none");
+        
+        }
+    }
+    
+</script>
+
+</body>
+</html>
